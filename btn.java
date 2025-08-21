@@ -5,21 +5,26 @@ import javax.swing.*;
 import javax.swing.border.Border;
 
 public class btn extends JButton{
+    private int width;
     boolean selected = false;
     int btnID;
-    Border lightGrey = BorderFactory.createLineBorder(new Color(126, 126, 126), 3); // Pastel blue and a thickness of 2 pixels
-    Border white = BorderFactory.createLineBorder(new Color(220, 220, 220), 3);
+    Color lightGrey = new Color(126, 126, 126);
+    Color white = new Color(220, 220, 220);
+    //Border lightGrey = BorderFactory.createLineBorder(new Color(126, 126, 126), 3); // Pastel blue and a thickness of 2 pixels
+    //Border white = BorderFactory.createLineBorder(new Color(220, 220, 220), 3);
+    //RoundedBorder rb = new RoundedBorder(width);
 
     public void transparentSetup(){
         this.setOpaque(false);
         this.setContentAreaFilled(false);
         this.setBorderPainted(true);
         this.setFocusPainted(true);
-        this.setBorder(lightGrey);
+        this.setBorder(new RoundedBorder(width));
+        this.setForeground(lightGrey);
     }
 
     public void setUp(int width, int height, boolean isTransparent){
-        
+        this.width = width;
         this.setPreferredSize(new Dimension(width, height));
         this.setMaximumSize(new Dimension(width, height));
         this.setSize(width, height);
@@ -41,10 +46,10 @@ public class btn extends JButton{
 
     public void changeSelectColour(boolean selected){
         if(selected){
-            this.setBorder(white);
+            this.setForeground(white);
         }
         else{
-            this.setBorder(lightGrey);
+            this.setForeground(lightGrey);
         }
     }
 
@@ -60,7 +65,7 @@ public class btn extends JButton{
     public btn(boolean t){
         super("");
         setUp(75, 75, t);
-        
+
     }
     public btn(){
         super("");
