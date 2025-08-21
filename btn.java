@@ -60,6 +60,7 @@ public class btn extends JButton{
     public btn(boolean t){
         super("");
         setUp(75, 75, t);
+        
     }
     public btn(){
         super("");
