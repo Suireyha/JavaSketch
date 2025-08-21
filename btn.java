@@ -74,7 +74,21 @@ public class btn extends JButton{
         }
     }
 
-    
+
+
+    public btn(boolean t){
+        super("");
+        setUp(75, 75, t);
+
+    }
+    public btn(boolean t, String name, int id){
+        super(name);
+        btnID = id;
+        setUp(75, 75, t);
+
+    }
+
+    /* //These more or less won't ever get used. I can reimplement them properly later if I want to make dynamic sized buttons
     public btn(int w, int h, boolean t){
         super("");
         setUp(w, h, t);
@@ -83,15 +97,10 @@ public class btn extends JButton{
         super("");
         setUp(w, h, false);
     }
-    public btn(boolean t){
-        super("");
-        setUp(75, 75, t);
-
-    }
     public btn(){
         super("");
         setUp(75, 75, false);
     }
-    
+    */
 
 }
