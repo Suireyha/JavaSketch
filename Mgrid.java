@@ -46,11 +46,19 @@ public class Mgrid{
         justifyPanels.anchor = GridBagConstraints.EAST;
         global.add(sideBar, justifyPanels); //Global is the parent of sideBar
 
-        sideBar.add(new btn(true, "COL", 0)); //This will eventually be a colour picker, likely won't use the btn class at all
-        sideBar.add(new btn(true, "BSH", 1)); //Brush
-        sideBar.add(new btn(true, "RBW", 2)); //Rainbow mode
-        sideBar.add(new btn(true, "ERS", 3)); //Eraser
-        sideBar.add(new btn(true, "CLR", 4));
+        btn picker = new btn(true, "COL", 0); //Thie will eventually be a colour picker, likely won't be a btn class at all
+        btn brush = new btn(true, "BSH", 1); //Brush
+        btn rainbow = new btn(true, "RBW", 2); //Rainbow mode
+        btn eraser = new btn(true, "ERS", 3); //Eraser
+        btn clear = new btn(true, "CLR", 4); //Clear
+
+        clear.addActionListener(null);
+
+        sideBar.add(picker); //Colour Picker
+        sideBar.add(brush); //Brush
+        sideBar.add(rainbow); //Rainbow mode
+        sideBar.add(eraser); //Eraser
+        sideBar.add(clear); //Clear
 
         //Create the grid of pixels
         for(int x = 0; x < length; x++){
