@@ -1,7 +1,4 @@
 import java.awt.*;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import javax.swing.*;
 import javax.swing.border.Border;
 
 public class RoundedBorder implements Border{
