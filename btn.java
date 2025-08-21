@@ -1,17 +1,15 @@
 import java.awt.*;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+import java.awt.event.*;
 import javax.swing.*;
 
 public class btn extends JButton{
     private int width;
     boolean selected = false;
     int btnID;
+    Color selectBlue = new Color(0, 138, 202);
+    Color hoverBlue = new Color(0, 138, 202, 91);
     Color lightGrey = new Color(126, 126, 126);
     Color white = new Color(220, 220, 220);
-    //Border lightGrey = BorderFactory.createLineBorder(new Color(126, 126, 126), 3); // Pastel blue and a thickness of 2 pixels
-    //Border white = BorderFactory.createLineBorder(new Color(220, 220, 220), 3);
-    //RoundedBorder rb = new RoundedBorder(width);
 
     public void transparentSetup(){
         this.setOpaque(false);
@@ -41,11 +39,35 @@ public class btn extends JButton{
          }
             
         });
+
+        this.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e){
+                //Mouse is hovering button
+                changeHoverColour(true, selected);
+            }
+            @Override
+            public void mouseExited(MouseEvent e){
+                //Mouse has left button
+                changeHoverColour(false, selected);
+            }
+        });
+
+    }
+
+    public void changeHoverColour(boolean hover, boolean selected){
+        if(hover){
+            this.setForeground(hoverBlue);
+        }
+        else{
+            changeSelectColour(selected);
+        }
+
     }
 
     public void changeSelectColour(boolean selected){
         if(selected){
-            this.setForeground(white);
+            this.setForeground(selectBlue);
         }
         else{
             this.setForeground(lightGrey);
@@ -68,7 +90,8 @@ public class btn extends JButton{
     }
     public btn(){
         super("");
-        setUp(50, 50, false);
+        setUp(75, 75, false);
     }
+    
 
 }

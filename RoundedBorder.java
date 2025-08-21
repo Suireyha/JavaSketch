@@ -5,7 +5,7 @@ public class RoundedBorder implements Border{
     //The Border interface demands we write functionality for isBorderOpaque,getBorderInsets and paintBorder
     public int width;
     RoundedBorder(int w){
-        this.width = w - 7; //I'm adding the -5 because I want the shape to be slightly smaller so that the border will actually fit within the object space
+        this.width = w - 10; //I'm adding the -5 because I want the shape to be slightly smaller so that the border will actually fit within the object space
     }
 
     @Override
@@ -13,7 +13,7 @@ public class RoundedBorder implements Border{
         Graphics2D g2d = (Graphics2D) g; //Cast the Graphics object (g) into a Graphics2D object (I need this for setStroke();
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON); //Adds anti aliasing so that the shape is drawn smoothly :)
         g2d.setStroke(new BasicStroke(3));
-        g2d.drawRoundRect(0, 0, this.width, this.width, this.width, this.width);
+        g2d.drawRoundRect(1, 1, this.width, this.width, this.width, this.width);
     }
 
     @Override
