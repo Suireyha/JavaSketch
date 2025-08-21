@@ -5,16 +5,17 @@ import javax.swing.*;
 import javax.swing.border.Border;
 
 public class btn extends JButton{
-    
+    boolean selected = false;
     int btnID;
-    Border blueBorder = BorderFactory.createLineBorder(new Color(0, 250, 42), 3); // Pastel blue and a thickness of 2 pixels
+    Border lightGrey = BorderFactory.createLineBorder(new Color(126, 126, 126), 3); // Pastel blue and a thickness of 2 pixels
+    Border white = BorderFactory.createLineBorder(new Color(220, 220, 220), 3);
 
     public void transparentSetup(){
         this.setOpaque(false);
         this.setContentAreaFilled(false);
         this.setBorderPainted(true);
         this.setFocusPainted(true);
-        this.setBorder(blueBorder);
+        this.setBorder(lightGrey);
     }
 
     public void setUp(int width, int height, boolean isTransparent){
@@ -31,9 +32,20 @@ public class btn extends JButton{
          @Override
          public void actionPerformed(ActionEvent e){
             System.out.println("Clicked!");
+            selected = !selected;
+            changeSelectColour(selected);
          }
             
         });
+    }
+
+    public void changeSelectColour(boolean selected){
+        if(selected){
+            this.setBorder(white);
+        }
+        else{
+            this.setBorder(lightGrey);
+        }
     }
 
     
@@ -45,10 +57,13 @@ public class btn extends JButton{
         super("");
         setUp(w, h, false);
     }
+    public btn(boolean t){
+        super("");
+        setUp(75, 75, t);
+    }
     public btn(){
         super("");
         setUp(50, 50, false);
     }
-
 
 }

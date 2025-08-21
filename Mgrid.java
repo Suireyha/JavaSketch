@@ -25,8 +25,8 @@ public class Mgrid{
         win.setBounds(200, 200, 900, 900); //Place a 900x900 window at 200,200 (200 px down and right from top left)
         win.setContentPane(global); //global is the main parent pannel
         //Setup for the panels
-        sideBar.setPreferredSize(new Dimension(50,500));
-        sideBar.setBackground(new Color(255,0,0)); //Red (Just for now so it's visible, will be invisible once we add elements to it, sorta like a div)
+        sideBar.setPreferredSize(new Dimension(100,500));
+        sideBar.setBackground(inFocus); //Red (Just for now so it's visible, will be invisible once we add elements to it, sorta like a div)
 
         canvas.setPreferredSize(new Dimension(500, 500));
 
@@ -45,6 +45,11 @@ public class Mgrid{
         justifyPanels.weightx = 0;
         justifyPanels.anchor = GridBagConstraints.EAST;
         global.add(sideBar, justifyPanels); //Global is the parent of sideBar
+
+        sideBar.add(new btn(true)); //This will eventually be a colour picker, likely won't use the btn class at all
+        sideBar.add(new btn(true)); //Rainbow mode
+        sideBar.add(new btn(true)); //Erase mode
+        sideBar.add(new btn(true)); //Clear
 
         //Create the grid of pixels
         for(int x = 0; x < length; x++){
@@ -79,6 +84,7 @@ public class Mgrid{
             public void focusLost(FocusEvent e){
                 System.out.println("Lost focus... :(");
                 global.setBackground(noFocus);
+                sideBar.setBackground(noFocus);
             }
         });
 
@@ -87,6 +93,7 @@ public class Mgrid{
             public void focusGained(FocusEvent e){
                 System.out.println("Welcome back!! :)");
                 global.setBackground(inFocus);
+                sideBar.setBackground(inFocus);
             }
         });
         
