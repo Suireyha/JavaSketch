@@ -11,13 +11,14 @@ public class RoundedBorder implements Border{
     @Override
     public void paintBorder(Component c, Graphics g, int x, int y, int width, int height){
         Graphics2D g2d = (Graphics2D) g; //Cast the Graphics object (g) into a Graphics2D object (I need this for setStroke();
-        g2d.setStroke(new BasicStroke(2));
+        g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON); //Adds anti aliasing so that the shape is drawn smoothly :)
+        g2d.setStroke(new BasicStroke(3));
         g2d.drawRoundRect(0, 0, this.width, this.width, this.width, this.width);
     }
 
     @Override
     public Insets getBorderInsets(Component c){
-        return new Insets(8,0,0,5); //This is like css padding
+        return new Insets(8,0,0,5); //This is like css padding, this says to pad 8px from the top and 5px from the right
     }
 
     @Override
