@@ -50,7 +50,7 @@ public class Mgrid{
         btn brush = new btn(true, "BSH", 1); //Brush
         btn rainbow = new btn(true, "RBW", 2); //Rainbow mode
         btn eraser = new btn(true, "ERS", 3); //Eraser
-        btn clear = new btn(true, "CLR", 4); //Clear
+        Clear clear = new Clear(true, "CLR", 4); //Clear
 
         clear.addActionListener(null);
 
