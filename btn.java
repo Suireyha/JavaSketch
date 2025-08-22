@@ -3,7 +3,6 @@ import java.awt.event.*;
 import javax.swing.*;
 
 public class btn extends JButton{
-    private int width;
     boolean selected = false;
     int btnID;
     Color hoverLime = new Color(0, 255, 50, 200);
@@ -26,7 +25,6 @@ public class btn extends JButton{
     }
 
     public void setUp(int width, int height, boolean isTransparent){
-        this.width = width;
         circleBorder = new RoundedBorder(width);
         this.setPreferredSize(new Dimension(width, height));
         this.setMaximumSize(new Dimension(width, height));

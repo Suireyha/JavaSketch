@@ -37,7 +37,6 @@ public class pixel extends JButton{
         this.addMouseMotionListener(new MouseAdapter(){
             @Override
             public void mouseDragged(MouseEvent e){
-                Point screenPoint = e.getLocationOnScreen();
                 Point parentPoint = SwingUtilities.convertPoint(e.getComponent(), e.getPoint(), getParent());
                 Component comp = getParent().getComponentAt(parentPoint);
                 if(comp instanceof pixel && comp != e.getSource()){

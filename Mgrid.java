@@ -9,7 +9,7 @@ public class Mgrid{
     public static void main(String[] args) throws Exception{
         //General initialisation and declaration
         int pxCount = 0; //Used for giving each pixel and ID
-        Color inFocus = new Color(52, 53, 54); //Colours for when the panel is in/out of focus
+        //Color inFocus = new Color(52, 53, 54); //Colours for when the panel is in/out of focus
         Color noFocus = new Color(47, 48, 49);
         
         GridBagConstraints justifyPanels = new GridBagConstraints(); //Used for justifying the layout of the master panels
