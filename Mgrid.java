@@ -7,7 +7,6 @@ import javax.swing.event.ChangeListener;
 public class Mgrid{
    
     public static void main(String[] args) throws Exception{
-        Color activeCol = new Color(0, 0, 0); //This is the active colour used for painting! Change this with the colour picker or whatever
         //General initialisation and declaration
         int pxCount = 0; //Used for giving each pixel and ID
         Color inFocus = new Color(52, 53, 54); //Colours for when the panel is in/out of focus
@@ -52,13 +51,11 @@ public class Mgrid{
         global.add(sideBar, justifyPanels); //Global is the parent of sideBar
 
         btn picker = new btn(true, "COL", 0); //Thie will eventually be a colour picker, likely won't be a btn class at all
-        btn brush = new btn(true, "BSH", 1); //Brush
-        btn rainbow = new btn(true, "RBW", 2); //Rainbow mode
-        btn eraser = new btn(true, "ERS", 3); //Eraser
-        Clear clear = new Clear(true, "CLR", 4); //Clear
+        btn rainbow = new btn(true, "RBW", 1); //Rainbow mode
+        btn eraser = new btn(true, "ERS", 2); //Eraser
+        Clear clear = new Clear(true, "CLR", 3); //Clear
 
         sideBar.add(picker); //Colour Picker
-        sideBar.add(brush); //Brush
         sideBar.add(rainbow); //Rainbow mode
         sideBar.add(eraser); //Eraser
         sideBar.add(clear); //Clear
@@ -132,6 +129,19 @@ public class Mgrid{
             for(int x = 0; x < grid.length; x++){
                 for(int y = 0; y < grid.length; y++){
                     grid[x][y].setBackground(new Color(255,255,255)); //Set everything to white
+                }
+            }
+
+         }
+        });
+
+        eraser.addActionListener( new ActionListener() {
+         @Override
+         public void actionPerformed(ActionEvent e){
+            
+            for(int x = 0; x < grid.length; x++){
+                for(int y = 0; y < grid.length; y++){
+                    grid[x][y].erasing = !grid[x][y].erasing;
                 }
             }
 

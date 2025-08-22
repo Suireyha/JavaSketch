@@ -6,6 +6,7 @@ public class pixel extends JButton{
 
     int pxID;
     boolean painted = false;
+    boolean erasing = false;
     Color activeColor;
 
     public void setUp(int width, int height){
@@ -22,8 +23,7 @@ public class pixel extends JButton{
          @Override
          public void actionPerformed(ActionEvent e){
             System.out.println("Pixel ID " + pxID + " clicked!");
-            painted = !painted;
-            if(painted){
+            if(!erasing){
                 setBackground(activeColor);
             }
             else{
