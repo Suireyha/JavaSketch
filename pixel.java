@@ -1,6 +1,5 @@
 import java.awt.*;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+import java.awt.event.*;
 import javax.swing.*;
 
 public class pixel extends JButton{
@@ -33,6 +32,20 @@ public class pixel extends JButton{
          }
             
         });
+
+        //This is the mouseDown listener bs so you can do brush actual strokes
+        this.addMouseMotionListener(new MouseAdapter(){
+            @Override
+            public void mouseDragged(MouseEvent e){
+                Point screenPoint = e.getLocationOnScreen();
+                Point parentPoint = SwingUtilities.convertPoint(e.getComponent(), e.getPoint(), getParent());
+                Component comp = getParent().getComponentAt(parentPoint);
+                if(comp instanceof pixel && comp != e.getSource()){
+                ((pixel) comp).doClick(); 
+                }
+            }
+        
+        });
     }
 
     //WARNING!!!!! Prefer not to use these two since they don't give pixels and ID
@@ -56,5 +69,7 @@ public class pixel extends JButton{
         setUp(w, h);
         pxID = id;
     }
+    
 
-}
+}   
+
