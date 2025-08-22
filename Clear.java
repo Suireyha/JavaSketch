@@ -33,7 +33,7 @@ public class Clear extends btn{
 
     public void changeHoverColour(boolean hover){
         if(hover){
-            this.setForeground(Color.RED);
+            this.setForeground(new Color(255, 39, 42));
         }
         else{
             this.setForeground(lightGrey);

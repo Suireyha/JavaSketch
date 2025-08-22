@@ -7,22 +7,25 @@ public class btn extends JButton{
     boolean selected = false;
     int btnID;
     Color selectBlue = new Color(0, 138, 202);
-    Color hoverBlue = new Color(0, 138, 202, 91);
+    Color hoverBlue = new Color(0, 140, 212, 170);
     Color lightGrey = new Color(126, 126, 126);
     Color white = new Color(220, 220, 220);
+    RoundedBorder circleBorder;
 
     public void transparentSetup(){
         this.setOpaque(false);
         this.setContentAreaFilled(false);
         this.setBorderPainted(true);
         this.setFocusPainted(false);
-        this.setBorder(new RoundedBorder(width));
+        this.setBorder(circleBorder);
         this.setForeground(lightGrey);
         this.setVerticalTextPosition(AbstractButton.TOP);
+        this.setFont(new Font("Ubuntu Sans", Font.BOLD, 15));
     }
 
     public void setUp(int width, int height, boolean isTransparent){
         this.width = width;
+        circleBorder = new RoundedBorder(width);
         this.setPreferredSize(new Dimension(width, height));
         this.setMaximumSize(new Dimension(width, height));
         this.setSize(width, height);
@@ -59,6 +62,8 @@ public class btn extends JButton{
     public void changeHoverColour(boolean hover, boolean selected){
         if(hover){
             this.setForeground(hoverBlue);
+            circleBorder.hover = true;
+            //this.setBorder(circleBorder);
         }
         else{
             changeSelectColour(selected);

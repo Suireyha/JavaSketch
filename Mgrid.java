@@ -74,6 +74,11 @@ public class Mgrid{
         System.out.println(length); //Prints the width/length of the grid
         win.setVisible(true); //This little piece of shit MUST be called after everything is added, I can't believe I just wasted 2 hours bug fixing THIS.
 
+        GraphicsEnvironment ff = GraphicsEnvironment.getLocalGraphicsEnvironment();
+        String fonts[] = ff.getAvailableFontFamilyNames();
+        for (String i : fonts) {
+            System.out.println(i + " ");
+        }
 
 
         
