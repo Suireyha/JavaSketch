@@ -1,13 +1,18 @@
 import java.awt.*;
 import java.awt.event.*;
+import javax.swing.event.ChangeEvent;
 import javax.swing.*;
+import javax.swing.event.ChangeListener;
 
 public class Mgrid{
+   
     public static void main(String[] args) throws Exception{
+        Color activeCol = new Color(0, 0, 0); //This is the active colour used for painting! Change this with the colour picker or whatever
         //General initialisation and declaration
         int pxCount = 0; //Used for giving each pixel and ID
         Color inFocus = new Color(52, 53, 54); //Colours for when the panel is in/out of focus
         Color noFocus = new Color(47, 48, 49);
+        
         GridBagConstraints justifyPanels = new GridBagConstraints(); //Used for justifying the layout of the master panels
         pixel[][] grid = new pixel[20][20]; //Create a 20x20 array of pixel objects (setup happens later)
         int length = grid.length; //Used for loops during setup of the canvas
@@ -71,13 +76,14 @@ public class Mgrid{
         System.out.println(pxCount); //Prints the number of pixels
         System.out.println(length); //Prints the width/length of the grid
         win.setVisible(true); //This little piece of shit MUST be called after everything is added, I can't believe I just wasted 2 hours bug fixing THIS.
-
+        
+        /*Uncomment this if you want to print all of the avaliable fonts- I was just using this to work out which fonts I could use for the buttons
         GraphicsEnvironment ff = GraphicsEnvironment.getLocalGraphicsEnvironment();
         String fonts[] = ff.getAvailableFontFamilyNames();
         for (String i : fonts) {
             System.out.println(i + " ");
         }
-
+        */
 
         
         //Event listeners
@@ -85,19 +91,36 @@ public class Mgrid{
         picker.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e){
-                JFrame cp = new JFrame("Colour Picker");
-                cp.setBounds(10100, 200, 1000, 500);
-                cp.setBackground(noFocus);
-                cp.add(new JColorChooser(noFocus));
-                cp.addWindowListener(new WindowAdapter(){
+                JColorChooser cp = new JColorChooser(noFocus);
+                cp.getSelectionModel().addChangeListener(new ChangeListener() {
+                    @Override
+                    public void stateChanged(ChangeEvent e){
+                        Color temp = cp.getColor();
+
+                        for(int x = 0; x < grid.length; x++){
+                            for(int y = 0; y < grid.length; y++){
+                                grid[x][y].activeColor = temp;
+                            }
+                        }
+
+                    }
+                });
+
+
+
+                JFrame cpWindow = new JFrame("Colour Picker");
+                cpWindow.setBounds(10100, 200, 800, 500);
+                cpWindow.setBackground(noFocus);
+                cpWindow.add(cp);
+                cpWindow.addWindowListener(new WindowAdapter(){
                     @Override
                     public void windowClosing(WindowEvent e){
                         picker.selected = false;
                         picker.changeSelectColour(picker.selected);
-                        cp.setVisible(false);
+                        cpWindow.setVisible(false);
                     }
                 });
-                cp.setVisible(true);
+                cpWindow.setVisible(true);
             }
 
         });

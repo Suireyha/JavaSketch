@@ -7,7 +7,8 @@ public class pixel extends JButton{
 
     int pxID;
     boolean painted = false;
-    
+    Color activeColor;
+
     public void setUp(int width, int height){
         
         this.setPreferredSize(new Dimension(width, height));
@@ -16,6 +17,7 @@ public class pixel extends JButton{
         this.setBorderPainted(false);
         this.setFocusPainted(true);
         this.setBackground( new Color(255, 255, 255));
+        this.activeColor = new Color(0, 0, 0);
 
         this.addActionListener( new ActionListener() {
          @Override
@@ -23,7 +25,7 @@ public class pixel extends JButton{
             System.out.println("Pixel ID " + pxID + " clicked!");
             painted = !painted;
             if(painted){
-                setBackground(new Color(0, 0, 0));
+                setBackground(activeColor);
             }
             else{
                 setBackground(new Color(255, 255, 255));
