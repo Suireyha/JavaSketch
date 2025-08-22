@@ -18,7 +18,7 @@ public class RoundedBorder implements Border{
 
     @Override
     public Insets getBorderInsets(Component c){
-        return new Insets(8,0,0,5); //This is like css padding, this says to pad 8px from the top and 5px from the right
+        return new Insets(8,8,12,15); //This is like css padding, this says to pad 8px from the top and 5px from the right
     }
 
     @Override

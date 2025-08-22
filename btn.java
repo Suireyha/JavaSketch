@@ -15,9 +15,10 @@ public class btn extends JButton{
         this.setOpaque(false);
         this.setContentAreaFilled(false);
         this.setBorderPainted(true);
-        this.setFocusPainted(true);
+        this.setFocusPainted(false);
         this.setBorder(new RoundedBorder(width));
         this.setForeground(lightGrey);
+        this.setVerticalTextPosition(AbstractButton.TOP);
     }
 
     public void setUp(int width, int height, boolean isTransparent){
