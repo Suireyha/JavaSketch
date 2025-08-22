@@ -52,8 +52,6 @@ public class Mgrid{
         btn eraser = new btn(true, "ERS", 3); //Eraser
         Clear clear = new Clear(true, "CLR", 4); //Clear
 
-
-
         sideBar.add(picker); //Colour Picker
         sideBar.add(brush); //Brush
         sideBar.add(rainbow); //Rainbow mode
@@ -83,6 +81,27 @@ public class Mgrid{
 
         
         //Event listeners
+        //Logic for the colour picker
+        picker.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e){
+                JFrame cp = new JFrame("Colour Picker");
+                cp.setBounds(10100, 200, 1000, 500);
+                cp.setBackground(noFocus);
+                cp.add(new JColorChooser(noFocus));
+                cp.addWindowListener(new WindowAdapter(){
+                    @Override
+                    public void windowClosing(WindowEvent e){
+                        picker.selected = false;
+                        picker.changeSelectColour(picker.selected);
+                        cp.setVisible(false);
+                    }
+                });
+                cp.setVisible(true);
+            }
+
+        });
+
         //Logic for the clear button
         clear.addActionListener( new ActionListener() {
          @Override
