@@ -52,7 +52,7 @@ public class Mgrid{
         btn eraser = new btn(true, "ERS", 3); //Eraser
         Clear clear = new Clear(true, "CLR", 4); //Clear
 
-        clear.addActionListener(null);
+
 
         sideBar.add(picker); //Colour Picker
         sideBar.add(brush); //Brush
@@ -83,6 +83,18 @@ public class Mgrid{
 
         
         //Event listeners
+        //Logic for the clear button
+        clear.addActionListener( new ActionListener() {
+         @Override
+         public void actionPerformed(ActionEvent e){
+            for(int x = 0; x < grid.length; x++){
+                for(int y = 0; y < grid.length; y++){
+                    grid[x][y].setBackground(new Color(255,255,255)); //Set everything to white
+                }
+            }
+
+         }
+        });
 
         //Close the window when user closes the window :fire:
         //frame.addWindowListener is very similar to add event listener in js
