@@ -26,14 +26,14 @@ public class Mgrid{
         win.setContentPane(global); //global is the main parent pannel
         //Setup for the panels
         sideBar.setPreferredSize(new Dimension(100,500));
-        sideBar.setBackground(inFocus); //Red (Just for now so it's visible, will be invisible once we add elements to it, sorta like a div)
+        sideBar.setBackground(noFocus); //Same colour as the background, I just want the sidebar to act as a formatting div
 
         canvas.setPreferredSize(new Dimension(500, 500));
 
         global.setSize(900, 900);
         global.setOpaque(true);
         global.setFocusable(true);
-        global.setBackground(inFocus);
+        global.setBackground(noFocus);
   
 
         justifyPanels.gridx = 0;
@@ -97,8 +97,8 @@ public class Mgrid{
             @Override
             public void focusLost(FocusEvent e){
                 System.out.println("Lost focus... :(");
-                global.setBackground(noFocus);
-                sideBar.setBackground(noFocus);
+                //global.setBackground(noFocus);
+                //sideBar.setBackground(noFocus);
             }
         });
 
@@ -106,8 +106,8 @@ public class Mgrid{
             @Override
             public void focusGained(FocusEvent e){
                 System.out.println("Welcome back!! :)");
-                global.setBackground(inFocus);
-                sideBar.setBackground(inFocus);
+                //global.setBackground(inFocus);
+                //sideBar.setBackground(inFocus);
             }
         });
         

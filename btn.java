@@ -6,8 +6,10 @@ public class btn extends JButton{
     private int width;
     boolean selected = false;
     int btnID;
+    Color hoverLime = new Color(0, 255, 50, 200);
+    Color selectLime = new Color(0, 255, 50);
     Color selectBlue = new Color(0, 138, 202);
-    Color hoverBlue = new Color(0, 140, 212, 170);
+    Color hoverBlue = new Color(0, 138, 202, 200);
     Color lightGrey = new Color(126, 126, 126);
     Color white = new Color(220, 220, 220);
     RoundedBorder circleBorder;
@@ -49,11 +51,13 @@ public class btn extends JButton{
             public void mouseEntered(MouseEvent e){
                 //Mouse is hovering button
                 changeHoverColour(true, selected);
+                circleBorder.hover = true;
             }
             @Override
             public void mouseExited(MouseEvent e){
                 //Mouse has left button
                 changeHoverColour(false, selected);
+                circleBorder.hover = false;
             }
         });
 
@@ -61,9 +65,8 @@ public class btn extends JButton{
 
     public void changeHoverColour(boolean hover, boolean selected){
         if(hover){
-            this.setForeground(hoverBlue);
-            circleBorder.hover = true;
-            //this.setBorder(circleBorder);
+            this.setForeground(hoverLime);
+            //this.setForeground(hoverBlue);
         }
         else{
             changeSelectColour(selected);
@@ -73,7 +76,8 @@ public class btn extends JButton{
 
     public void changeSelectColour(boolean selected){
         if(selected){
-            this.setForeground(selectBlue);
+            this.setForeground(selectLime);
+            //this.setForeground(selectBlue);
         }
         else{
             this.setForeground(lightGrey);
@@ -90,7 +94,7 @@ public class btn extends JButton{
     public btn(boolean t, String name, int id){
         super(name);
         btnID = id;
-        setUp(75, 75, t);
+        setUp(95, 95, t);
 
     }
 
